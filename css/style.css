@@ -1,8 +1,31 @@
-
-#wrapper{
-	width: 980px;
-	margin:0 auto;
+@media only screen and (max-device-width : 640px) {
+	#wrapper{
+		width: 640px;
+		margin:0 auto;
+	}
 }
+
+@media only screen and (max-device-width: 768px) {
+	#wrapper{
+		width: 768px;
+		margin:0 auto;
+	}
+}
+
+@media only screen and (max-device-width: 320px) {
+	#wrapper{
+		width:320px;
+		margin:0 auto;
+	}
+}
+
+/*@media only screen and (max-device-width : 1824px) {
+	#wrapper{
+		width: 980px;
+		margin:0 auto;
+	}
+}*/
+
 
 #header{
 	height: 50px;
@@ -24,6 +47,7 @@
 	color: #9aaac1;
 	padding: 10px;
 	width: 70%;
+	font-size: 16px;
 }
 
 input{
@@ -77,11 +101,12 @@ input:focus{
 	position: absolute;
 	left: -8em;
 	top: 3em;
-	width: 300px;
+	width: 15%;
 	border: 1px solid #9aaac1;
 	z-index: 1;
 	border-radius: 3px;
 	background: #fff;
+	padding: 0 0 5px 0;
 }
 
 .list .searcher{
@@ -95,15 +120,27 @@ input:focus{
 	margin: 0 auto;
 	width: 90%;
 	padding: 5px 10px;
+	font-size: 14px;
 }
 
-.list .person{
+.list .string{
 	padding:10px;
 	cursor:pointer;
+	font-size: 13px;
 }
 
-.list .person:hover{
+.list .string:hover{
 	background:#697485;
+	color: #fff;
+}
+
+.list .avatar{
+	width: 25px;
+	height: 25px;
+	border-radius: 13px;
+	background: #fff url(http://newhits.ru/images/halloween/128x128/halloween_scream.png);
+	background-size: 25px;
+	margin: 0 10px;
 }
 
 .button{
@@ -115,6 +152,8 @@ input:focus{
 	color: #fff;
 	text-shadow: 1px 1px 0px rgba(38, 38, 38, 1);
 	cursor: pointer;
+	font-size: 16px;
+	font-weight: bold;
 }
 
 .task{
@@ -145,4 +184,9 @@ input:focus{
 [rel='del']{
 	cursor:pointer;
 }
+
+input + label{
+	cursor:pointer;
+}
+
 

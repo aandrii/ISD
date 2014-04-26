@@ -19,3 +19,5 @@ App.Tags = [
 	{tag: 'Programming'}
 
 ];
+
+App.Task = {};

@@ -24,16 +24,37 @@ App.tmpl = function (type, left, top){
 			tmpl.appendChild(searcher);
 			
 			for (var i in App.Persons){
-				var string = document.createElement('div');
+				var string = document.getElementById('person').cloneNode(true);
 				string.setAttribute('rel', 'string');
 
 				var name = document.createTextNode(App.Persons[i].name);
 				string.appendChild(name);
-				string.className = 'person';				
-
+				
 				tmpl.appendChild(string);
 			}
 		break;
+
+		case 'tag':
+			tmpl.appendChild(searcher);
+			
+			for (var i in App.Tags){
+				var string = document.getElementById('tag').cloneNode(true);
+				string.setAttribute('rel', 'string');
+
+				var checkbox = string.children[0];
+				var label = string.children[1];
+
+				checkbox.setAttribute('id', App.Tags[i].tag);
+				label.setAttribute('for', App.Tags[i].tag);
+
+				var tag = document.createTextNode(App.Tags[i].tag);
+				label.appendChild(tag);
+				
+				tmpl.appendChild(string);
+			}
+		break;
+
+
 	}
 
 	return tmpl;
@@ -54,13 +75,16 @@ App.create_task = function (text){
 	task.appendChild(task_text);
 	task.appendChild(del);
 
-	var params = {
-		task : text,
-		date : 'date',
-		owner: 'owner'
-	}
+	// var params = {
+	// 	task : text,
+	// 	date : 'date',
+	// 	owner: 'owner'
+	// }
 
-	App.AJAX(params);
+	App.Task.task = text;
+
+	//saving task on server
+	App.AJAX(App.Task);
 
 	return task;
 };

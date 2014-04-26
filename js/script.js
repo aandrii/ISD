@@ -19,10 +19,23 @@ window.onload = function(){
 
 	//document click
 	document.querySelector('body').addEventListener('click', function(event) {
+	 
+	 //removing node
 	  if (event.target.getAttribute('rel') == 'del') {
 	    event.target.parentNode.remove();
 	  }
-	});
+
+	  //adding App.Task fields
+	    var el_id = event.target.getAttribute('id');
+	    
+	    //person
+	    if(el_id == 'person')
+	    	App.Task.name = event.target.innerText || event.target.textContent;
+
+	    else if(el_id == 'date')
+	    	App.Task.date = event.target;
+	 
+	 });
 
 
 	//icons click
@@ -65,6 +78,8 @@ function popup(e){
 	  top  = point.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
 	} 
 
+	left -= 50;
+
 	type = e.target.getAttribute('data-type');
 	node = App.tmpl(type, left, top);
 
@@ -74,27 +89,30 @@ function popup(e){
 
 			try {
 
-				//Chrome
-				if(e.clientX){
-					if(e.clientX >= left &&
-					e.clientX <= left+300 &&
-					e.clientY >= top &&
-					e.clientY <= top+300) return;
-				}
+				if(e.target.getAttribute('id') != 'person'){
+						//Chrome
+						if(e.clientX){
+							if(e.clientX >= left &&
+							e.clientX <= left+300 &&
+							e.clientY >= top &&
+							e.clientY <= top+300) return;
+						}
 
-				//FireFox
-				if(e.pageX){
-					if(e.pageX >= left &&
-					e.pageX <= left+170 &&
-					e.pageY >= top &&
-					e.pageY <= top+170) return;
+						//FireFox
+						if(e.pageX){
+							if(e.pageX >= left &&
+							e.pageX <= left+170 &&
+							e.pageY >= top &&
+							e.pageY <= top+300) return;
+						}
 				}
 				
 			} catch(e){console.log(e)}
+
 			
 			node.remove();
-
 			document.removeEventListener('click', onUnClick, false);
+			
 
 		};
 
@@ -130,6 +148,19 @@ function searchStart(text){
 Element.prototype.remove = function() {
     this.parentElement.removeChild(this);
 };
+
+// Element.prototype.text = function() {
+//  var html = this.innerHTML;
+//  html.replace(/<[^>]*>/g, "");
+//  console.log(html)
+//  return html;
+// }
+
+
+// Element.prototype.find = function(tagname) {
+//     var el = this.getElementById(this.getAttribute('id')).getElementsByTagName(tagname)[0];
+//     return el;
+// };
 
 
 
