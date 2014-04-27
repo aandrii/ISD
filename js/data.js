@@ -4,9 +4,10 @@
 
 App.Persons = [
 
-	{name: 'Arny Iron'}, 
+	{name: 'Sylvester Stallone'}, 
 	{name: 'Jan-Claude Van Damme'},
-	{name: 'Bruce Lee'}
+	{name: 'Bruce Lee'},
+	{name: 'Arnold Schwarzenegger'}
 
 ];
 
@@ -20,4 +21,8 @@ App.Tags = [
 
 ];
 
-App.Task = {};
+App.Task = {
+	name: '',
+	tags: [],
+	date: ''
+};

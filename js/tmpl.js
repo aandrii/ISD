@@ -2,14 +2,29 @@
 ---------- templates
 */
 
-App.tmpl = function (type, left, top){
+App.render = function() {
+	App.PersonList = App.tmpl('person');
+	App.TagsList   = App.tmpl('tag');
+	App.Datepicker = App.tmpl('datepicker');
+
+	App.MainPage.appendChild(App.PersonList);
+	App.MainPage.appendChild(App.TagsList);
+	App.MainPage.appendChild(App.Datepicker);
+
+	App.PersonList.hide();
+	App.TagsList.hide();
+	App.Datepicker.hide();
+};
+
+
+App.tmpl = function (type){
 	var tmpl = document.createElement('div');
 
 	tmpl.className  = tmpl.className + 'list';
 	tmpl.setAttribute('rel','popup');
 
-	tmpl.style.left = left + "px";
-	tmpl.style.top  = top + "px";
+	//tmpl.style.left = left + "px";
+	//tmpl.style.top  = top + "px";
 
 	var searcher = document.createElement('div');
 	searcher.className = 'searcher';
@@ -54,44 +69,40 @@ App.tmpl = function (type, left, top){
 			}
 		break;
 
+		case 'datepicker':
+			var datepicker = document.createTextNode('Datepicker in process');
+			tmpl.className  = tmpl.className + ' datepicker';
+			tmpl.appendChild(datepicker);			
+		break;
+
+		default:
+			return;
+		break;
+
 
 	}
+
+	tmpl.input = searcher_input;
 
 	return tmpl;
 };
 
-App.create_task = function (text){
-	var task = document.createElement('div');
-	var task_text = document.createTextNode(text);
+App.tmpl_show = function(type, left, top){
+	var tmpl;
+	if(type == "person")
+		tmpl = App.PersonList;
+	if(type == "tag")
+		tmpl = App.TagsList;
+	if(type == "datepicker")
+		tmpl = App.Datepicker;
 
-	task.className = 'task';
+	tmpl.style.left = left + "px";
+	tmpl.style.top  = top + "px";
 
-	var del  = document.createElement('div');
-	del.setAttribute('rel','del');
-	del.className = 'right';
-	var del_icon = document.createTextNode("X");
-	del.appendChild(del_icon);
+	tmpl.show();
 
-	task.appendChild(task_text);
-	task.appendChild(del);
+	return tmpl;
 
-	// var params = {
-	// 	task : text,
-	// 	date : 'date',
-	// 	owner: 'owner'
-	// }
-
-	App.Task.task = text;
-
-	//saving task on server
-	App.AJAX(App.Task);
-
-	return task;
 };
 
-App.AJAX = function(params, callback){
-	console.log(params)
-
-	if(callback) callback();
-};
 

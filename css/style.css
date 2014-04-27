@@ -165,6 +165,14 @@ input:focus{
 	padding: 10px;
 }
 
+.datepicker{
+	min-height: 200px;
+}
+
+.active{
+	background: #27c168;
+}
+
 .invisible{
 	display:none;
 }
