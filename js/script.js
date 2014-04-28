@@ -18,6 +18,9 @@ window.onload = function(){
 	
 	//task input
 	App.adder_text = document.getElementById('adder_text');
+
+	//App.Data ini
+	App.DataLoad();
 	
 	//basic App events handlers
 	App.handlersOn();

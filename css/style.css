@@ -1,35 +1,3 @@
-@media only screen and (max-device-width : 640px) {
-	#wrapper{
-		width: 640px;
-		margin:0 auto;
-	}
-}
-
-@media only screen and (max-device-width: 768px) {
-	#wrapper{
-		width: 768px;
-		margin:0 auto;
-	}
-}
-
-@media only screen and (max-device-width: 320px) {
-	#wrapper{
-		width:320px;
-		margin:0 auto;
-	}
-}
-
-/*@media only screen and (max-device-width : 1824px) {
-	#wrapper{
-		width: 980px;
-		margin:0 auto;
-	}
-}*/
-
-
-#header{
-	height: 50px;
-}
 
 #container{
 	background: #edeff2;
@@ -198,3 +166,29 @@ input + label{
 }
 
 
+
+@media screen and (min-width:240px) and (max-width:600px) {
+	
+	#wrapper, #header, #container, .adder{
+		width:auto;
+	}
+
+	.adder_text{
+		width:50%;
+	}
+
+	.button.left{
+		float:right;
+	}
+
+	.task{
+		margin:0;
+		width:auto;
+	}
+
+	.list{
+		width:200px;
+		left:110px !important;
+	}
+
+}
