@@ -1,6 +1,8 @@
 ISD
 ===
 
+http://dpzz.github.io/TODO/html/index.html - working page
+
 Запускать index.html
 
 VERSION 2
